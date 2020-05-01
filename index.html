@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+		
+	   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+             body {
+            margin: 0;
+            padding: 0;
+            background: #403e44;
+            font-family: "Century Gothic", CenturyGothic, sans-serif;
+            color: 	#ffa2ab;
+        }	
+h1 {
+            font-family: "Century Gothic", CenturyGothic, sans-serif
+            color: 	#ffa2ab;
+			font-size: 22;
+			margin-top: 20;
+			margin-left: 200;
+        }
+
+.google-visualization-tooltip {
+  background-color: #f4e9df !important;
+  border: 1px solid #946b2d !important;
+	
+}
+.google-visualization-tooltip span {
+  color: #403e44 !important;
+} 
+	  </style>
+	  
+	<header>
+        <h1>Snapshot of COVID-19 in Pennsylvania</h1>
+	  </header>
+		    <script type="text/javascript">
+		
+		
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart', 'bar']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawPieChart);
+				
+	      google.charts.setOnLoadCallback(drawBarChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+				
+      function drawPieChart() {
+
+		  
+		  var data = google.visualization.arrayToDataTable([
+			  ['Age Range', 'Number of Cases'],
+			  ["0-18", 1257],
+			  ["19-24", 2745],
+			  ["25-49", 17389],
+			  ["50-64", 12356],
+			  ["65+", 11898]
+		  ]);
+
+        var options = { title: "Positive Cases by Age Range",
+					    titleTextStyle:{
+							fontName: "Lato",
+							color: "#e8bd8b",
+							textAlighn: 'center'
+						},
+						tooltip:{
+						isHtml: true
+		},
+					   legend:{
+						   position: 'bottom',
+						   textStyle: {
+							   fontName: 'Lato',
+							   color: '#f9f9f9'
+						   }
+					   },
+			pieSliceTextStyle:{
+							color:'#f9f9f9',
+							fontName: 'Lato'
+						},
+					   is3D: true,
+			slices: {
+							0: {color: '#fff2b3'},
+							1: {color: '#35b899'},
+							2: {color: '#ffb45a'},
+							3: {color: '#6497b1'},
+							4: {color: '#ffa2ab'}
+		},
+					    backgroundColor: "#403e44",
+				}
+		
+		
+var PieChart = new google.visualization.PieChart(document.getElementById('PieChart_div'));
+       
+		  PieChart.draw(data, options);
+				}
+				
+/////////////////Bar Chart////////////////////////
+function drawBarChart(){
+	
+var data = google.visualization.arrayToDataTable([
+	['Age Range', 'Number of Hospitalizations', {role: 'style'}],
+	['0-29', 915, 'color: #fff2b3'],
+	['30-49', 2288, 'color:#35b899'],
+	['50-64', 4576, 'color:#ffb45a'],
+	['65-79', 9153, 'color:#6497b1'],
+	['80+', 8695, 'color:#ffa2ab']
+])
+        // Set chart options
+        var options = {
+			tooltip:{
+				isHtml:true
+			},
+			colors: [ '#6497b1', '#35b899'],
+			backgroundColor: "#403e44",
+			'title':'Hospitalizations by Age Range',
+			legend:{position: 'none'},
+					   titleTextStyle:
+					   {color: "#e8bd8b",
+							 fontName: "Lato",
+							 fontSize: 14,
+            				bold: true,
+					   },
+			vAxis: {    title: 'Number of Hospitalizations',
+				        titleTextStyle:{
+							color: "#e8bd8b",
+							 fontName: "Lato",
+							 fontSize: 12,
+            				bold: true,
+							italic: false,
+							padding: 10
+						},
+					    colors: ['#ffa2ab', '#35b899', '#ffb45a', '#6497b1', '#ffa2ab'],
+						textStyle: {
+							fontName: 'Lato',
+							   color: '#f9f9f9'
+						}
+			},
+					    hAxis: {
+						textStyle: {
+							fontName: 'Lato',
+							   color: '#f9f9f9'
+						},
+          				title: 'Age Range',
+						titleTextStyle: 
+							{color: "#e8bd8b",
+							 fontName: "Lato",
+							 fontSize: 12,
+            				bold: true,
+							italic: false,
+							padding: 10}
+
+        },
+					}
+		var BarChart = new google.charts.Bar(document.getElementById('BarChart_div'));
+       
+		  BarChart.draw(data, google.charts.Bar.convertOptions(options));
+        };
+		
+
+
+    </script>
+  </head>
+
+  <body>
+<!--
+	  <table class="columns">
+		  <tr>
+-->
+    <!--Div that will hold the pie chart-->
+<div id="PieChart_div" style="width: 700; height:300; margin-bottom: 20; margin-left: 40; padding:20; border: 1px dashed  #e8bd8b;border-radius: 25px;"></div>
+<div id= "BarChart_div" style="width: 700; height:300; margin-left: 40; padding: 20; border: 1px dashed  #e8bd8b;border-radius: 25px;"></div>
+<!--
+			  </tr>
+		  </table>
+-->
+  </body>
+</html>
